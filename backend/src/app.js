@@ -27,11 +27,13 @@ const express = require('express');
 const cors = require('cors');
 const routes = require('./routes');//importando as rotas
 //precisa do './' para indicar que routes é um arquivo e não um módulo, como o express 
+const { errors } = require('celebrate');
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());//diz ao express que usaremos json para as requisições
 app.use(routes);
+app.use(errors());
 
-app.listen(3333);
+module.exports = app;
